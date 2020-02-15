@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'boards',
     'accounts',
-    'secondboards'
+    'secondboards',
 ]
 
 MIDDLEWARE = [

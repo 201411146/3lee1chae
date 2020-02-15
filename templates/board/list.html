@@ -5,7 +5,22 @@
 {% block content %}
 {% if user.is_authenticated %}
 
-{%for post in object_list %}
+<div class="column">
+    <div calss="col-2">
+        <div class="list-group">
+            <a href="/boards" class="list-group-item {% if not current_category %}active{% endif %}">All</a>
+            {% for c in categories %}
+            {{c.name}}
+            <a href="{{c.get_absolute_url}}"
+                class="list-group-item {% if current_category.slug == c.slug %}active{% endif %}"> {{c.category}}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+{%for post in products %}
 
 <ul>
     <li>
