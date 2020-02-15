@@ -23,7 +23,7 @@ class Board(models.Model):
         Category, on_delete=models.SET_NULL, null=True)
     authors = models.ForeignKey(
         User, on_delete=models.CASCADE)
-    photo = models.ImageField(upload_to='sellphotos')
+    photo = models.ImageField(upload_to='sellphotos', blank=True)
     text = models.TextField()
     date = models.DateField()
     slug = models.SlugField(max_length=200, null=True)

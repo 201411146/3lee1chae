@@ -4,9 +4,9 @@
 
 {% block content %}
 
-
+{% if object.photo %}
 <p><img src="{{object.photo.url}}" style="width: 20%;"></p>
-
+{% endif %}
 <p>{{object.authors.username}}</p>
 <p>{{object.text}}</p>
 <p>{{object.date}}</p>

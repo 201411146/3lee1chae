@@ -4,7 +4,18 @@
 
 {% block content %}
 {% if user.is_authenticated %}
+<div class="container">
+    <header class="header clear fix">
+        <nav class="navbar navbar-expand-sm  bg-success navbar-dark ">
+            <ul class="navbar-nav">
+                <li class="nav-item active"><a href="{% url 'board:board_list' %}" class="nav-link ">삽니다</a></li>
+                <li class="nav-item "><a href="{% url 'secondboard:board_list' %}" class="nav-link ">팝니다</a>
+                </li>
 
+            </ul>
+        </nav>
+    </header>
+</div>
 <div class="column">
     <div calss="col-2">
         <div class="list-group">

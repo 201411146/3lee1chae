@@ -21,7 +21,7 @@ class Board(models.Model):
         Category, on_delete=models.SET_NULL, null=True)
     authors = models.ForeignKey(
         User, related_name='second', on_delete=models.CASCADE)
-    photo = models.ImageField(upload_to='buyphotos')
+    photo = models.ImageField(upload_to='buyphotos', blank=True)
     text = models.TextField()
     date = models.DateField()
     slug = models.SlugField(max_length=200, null=True)
