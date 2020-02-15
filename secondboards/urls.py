@@ -5,11 +5,11 @@ from .models import Board
 app_name = 'secondboard'
 
 urlpatterns = [
-    path('', board_list, name='board_list'),
+    path('', BoardList.as_view(), name='board_list'),
     path('detail/<int:pk>', BoardDetailView.as_view(), name='board_detail'),
     path('upload/', BoardUploadView.as_view(), name='board_upload'),
     path('delete/<int:pk>', BoardDeleteView.as_view(), name='board_delete'),
     path('update/<int:pk>', BoardUpdateView.as_view(), name='board_update'),
-    path('<slug:category_slug>', board_list, name='board_category'),
+    path('<slug:category_slug>', BoardList.as_view(), name='board_category'),
 
 ]

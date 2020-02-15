@@ -5,21 +5,31 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.shortcuts import redirect
 
-
 # Create your views here.
 
 
-def board_list(request, category_slug=None):
-    current_category = None
-    categories = Category.objects.all()
-    products = Board.objects.all()
+class BoardList(ListView):
+    template_name = 'secondboard/list.html'
 
-    if category_slug:
-        current_category = get_object_or_404(Category, slug=category_slug)
-        products = products.filter(category=current_category)
+    def get_queryset(self):
+        if self.kwargs:
+            self.categories = Category.objects.all()
+            self.current_category = get_object_or_404(
+                Category, slug=self.kwargs.get('category_slug'))
+            self.products = Board.objects.filter(
+                category=self.current_category)
+        else:
+            self.current_category = None
+            self.categories = Category.objects.all()
+            self.products = Board.objects.all()
 
-    return render(request, 'secondboard/list.html', {'current_category': current_category,
-                                                     'categories': categories, 'products': products})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['current_category'] = self.current_category
+        context['categories'] = self.categories
+        context['products'] = self.products
+        return context
 
 
 class BoardUploadView(CreateView):
