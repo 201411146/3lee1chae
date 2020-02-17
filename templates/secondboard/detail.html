@@ -7,10 +7,11 @@
 {% if object.photo %}
 <p><img src="{{object.photo.url}}" style="width: 20%;"></p>
 {% endif %}
+
 <p>{{object.authors.username}}</p>
 <p>{{object.text}}</p>
 <p>{{object.date}}</p>
-<p>{{object.category}}</p>
+
 {% if object.authors == user%}
 
 <a href="{% url 'secondboard:board_delete' pk=object.id %}" class="btn btn-outline-danger btn-sm float-right">

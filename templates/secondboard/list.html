@@ -23,7 +23,7 @@
             <a href="/secondboards" class="list-group-item {% if not current_category %}active{% endif %}">All</a>
             {% for c in categories %}
 
-            <a href="{{c.get_absolute_url}}"
+            <a href="{% url 'secondboard:board_category' c.slug %}"
                 class="list-group-item {% if current_category.slug == c.slug %}active{% endif %}"> {{c.category}}</a>
             {% endfor %}
         </div>
@@ -36,7 +36,7 @@
 
 <ul>
     <li>
-        <a href="">{{post.text}}</a>
+        <a href="{% url 'secondboard:board_detail' pk=post.id %}">{{post.text}}</a>
     </li>
 </ul>
 {% endfor %}
